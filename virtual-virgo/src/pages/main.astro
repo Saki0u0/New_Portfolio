@@ -34,11 +34,61 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
     font-size: 2rem;
   }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
 <script>
-   gsap.registerPlugin(ScrollTrigger);
-  gsap.timeline()
-    .from(".logo h1:first-child", { opacity: 0, y: -50, duration: 1 }) // "HELLO!"
-    .from(".logo h2", { opacity: 0, y: -30, duration: 1 }, "-=0.5") // "My name is"
-    .from(".logo h1:last-child", { opacity: 0, y: -50, duration: 1 }, "-=0.5"); 
+  // ウィンドウがロードされた後にGSAPとScrollTriggerを読み込む
+  window.addEventListener('load', () => {
+    // GSAPを読み込む
+    const gsapScript = document.createElement('script');
+    gsapScript.src = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js";
+    gsapScript.onload = () => {
+      // ScrollTriggerを読み込む
+      const scrollTriggerScript = document.createElement('script');
+      scrollTriggerScript.src = "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js";
+      scrollTriggerScript.onload = () => {
+        // ScrollTriggerを登録
+        gsap.registerPlugin(ScrollTrigger);
+
+        // アニメーションの設定
+        gsap.from(".logo h1:first-child", {
+          scrollTrigger: {
+            trigger: ".main",
+            start: "top center", // スクロール位置のトリガー設定
+            toggleActions: "play none none reverse", // アクションの設定
+            markers: true,
+          },
+          opacity: 0,
+          y: -50,
+          duration: 1,
+        });
+
+        gsap.from(".logo h2", {
+          scrollTrigger: {
+            trigger: ".main",
+            start: "top center",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: -30,
+          duration: 1,
+          delay: 0.5,
+        });
+
+        gsap.from(".logo h1:last-child", {
+          scrollTrigger: {
+            trigger: ".main",
+            start: "top center",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: -50,
+          duration: 1,
+          delay: 1,
+        });
+      };
+      document.body.appendChild(scrollTriggerScript);
+    };
+    document.body.appendChild(gsapScript);
+  });
 </script>
+
