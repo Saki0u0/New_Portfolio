@@ -1,0 +1,44 @@
+---
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+---
+
+<div class="main">
+  <div class="logo">
+    <h1>HELLO!</h1>
+    <h2>My name is</h2>
+    <h1>SAKI EBINA!</h1>
+  </div>
+</div>
+<style>
+  .main{
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height:50px;
+  }
+
+  .logo{ 
+    text-align: center;
+    color:#03005D;
+    letter-spacing: 1rem;
+    font-family: "Jaro", sans-serif;
+  }
+
+  .logo h1{
+    font-size: 3.5rem ;
+  }
+
+  .logo h2{
+    font-size: 2rem;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script>
+   gsap.registerPlugin(ScrollTrigger);
+  gsap.timeline()
+    .from(".logo h1:first-child", { opacity: 0, y: -50, duration: 1 }) // "HELLO!"
+    .from(".logo h2", { opacity: 0, y: -30, duration: 1 }, "-=0.5") // "My name is"
+    .from(".logo h1:last-child", { opacity: 0, y: -50, duration: 1 }, "-=0.5"); 
+</script>
