@@ -1,7 +1,11 @@
-<div class="about">
+<div id="about">
     <div class="right">
       <div class="title">
        <h1>About Me</h1>
+       <div class="mobile-photo">
+        <img src="../../public/photo.jpg" alt="photo" class="photo-icon">
+        <div class="square"></div>
+       </div>
       </div>
       <div class="description">
         <p class ="japanese">
@@ -29,7 +33,7 @@
 </div>
 <style>
 
-.about{
+#about{
   display: flex;
   width: 800px;
   height:100vh;
@@ -40,6 +44,12 @@
 .title h1{
   color:#03005D;
   margin-bottom: 30px;
+  font-family: "Jaro", sans-serif;
+  font-size: 3rem;
+}
+
+.mobile-photo{
+  display:none
 }
 
 .right{
@@ -71,4 +81,43 @@
   display:none;
 }
 
+@media (max-width: 768px) {
+  #about{
+    width:100%;
+    flex-direction:column;
+    margin: 0 auto;
+    height:100%;
+    padding-bottom: 100PX;
+  }
+
+  .title h1{
+    text-align: center;
+  }
+
+  .mobile-photo{
+    display:block;
+    margin-bottom:50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-bottom: 50px;
+  }
+
+  .photo{
+    display:none;
+  }
+
+  .square{
+    margin-left: 50px;
+  }
+
+  .description{
+    text-align: center;
+  }
+
+  .right{
+    width:80%
+  }
+
+}
 </style>

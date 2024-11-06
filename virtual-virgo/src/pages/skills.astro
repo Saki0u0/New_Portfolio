@@ -1,110 +1,80 @@
-<div class="skills">
+---
+import '../styles/skills.css';
+---
+
+<div id="skills">
   <h1>Skills</h1>
-  <div class="skill-icon">
-    <div class="section">
-      <img src="../../public/html.svg" alt="html">
-      <p>HTML</p>
-    </div>
-    <div class="section">
-      <img src="../../public/css.svg" alt="css">
-      <p>CSS</p>
-    </div>
-    <div class="section">
-      <img src="../../public/javascript.svg" alt="javascript">
-      <p>Javascript</p>
-    </div>
-    <div class="section">
-      <img src="../../public/jquery.svg" alt="jquery">
-      <p>jQuery</p>
-    </div>
-    <div class="section">
-      <img src="../../public/wordpress.svg" alt="wordpress">
-      <p>Wordpress</p>
-    </div>
-    <div class="section">
-      <img src="../../public/boostrap.svg" alt="boostrap">
-      <p>Boostrap</p>
-    </div>
-    <div class="section">
-      <img src="../../public/astro.svg" alt="astro">
-      <p>Astro</p>
-    </div>
-    <div class="section">
-      <img src="../../public/laptop.svg" alt="gsap">
-      <p>GSAP</p>
-    </div>
-    <div class="section">
-      <img src="../../public/photoshop.svg" alt="photoshop">
-      <p>Photoshop</p>
-    </div>
-    <div class="section">
-      <img src="../../public/tailwind.svg" alt="tailwind">
-      <p>Tailwind</p>
-    </div>
-    <div class="section">
-      <img src="../../public/figma.svg" alt="figma">
-      <p>figma</p>
-    </div>
-    <div class="section">
-      <img src="../../public/github-pink.svg" alt="github">
-      <p>GitHub</p>
-    </div>
-  </div>
+  <div class="skill-icon"></div>
+
   <h3>Currently Learning</h3>
-  <div class="currently-learnig">
-    <div class="section">
-      <img src="../../public/react.svg" alt="react">
-      <p>React</p>
-    </div>
-    <div class="section">
-      <img src="../../public/typescript.svg" alt="typescript">
-      <p>Typescript</p>
-    </div>
-    <div class="section">
-      <img src="../../public/next-js.svg" alt="next-js">
-      <p>Next.js</p>
-    </div>
-  </div>
+  <div class="currently-learning"></div>
 </div>
+<script>
+//icon
 
-<style>
-  .skills{
-    width: 800px;
-    height:100vh;
-    align-items: center;
-    margin:0 auto;
-  }
+document.addEventListener("DOMContentLoaded", () => {
 
-  .skills h1,h3{
-    margin-bottom: 30px;
-    color:#03005D;
-  }
+  // const skillsContainer = document.querySelector('.skills');
+const skillIconContainer = document.querySelector('.skill-icon');
+const currentlyLearningContainer = document.querySelector('.currently-learning')
 
-  .skill-icon{
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom:30px;
-  }
+const skillsData = [
+  { src: '../../public/html.svg', alt: 'html', title: 'HTML' },
+  { src: '../../public/css.svg', alt: 'css', title: 'CSS' },
+  { src: '../../public/javascript.svg', alt: 'javascript', title: 'Javascript' },
+  { src: '../../public/jquery.svg', alt: 'jquery', title: 'jQuery' },
+  { src: '../../public/wordpress.svg', alt: 'wordpress', title: 'Wordpress' },
+  { src: '../../public/boostrap.svg', alt: 'boostrap', title: 'Boostrap' },
+  { src: '../../public/astro.svg', alt: 'astro', title: 'Astro' },
+  { src: '../../public/laptop.svg', alt: 'gsap', title: 'GSAP' },
+  { src: '../../public/photoshop.svg', alt: 'photoshop', title: 'Photoshop' },
+  { src: '../../public/tailwind.svg', alt: 'tailwind', title: 'Tailwind' },
+  { src: '../../public/figma.svg', alt: 'figma', title: 'Figma' },
+  { src: '../../public/github-pink.svg', alt: 'github', title: 'GitHub' },
+];
 
-  .currently-learnig{
-    display: flex;
-  }
+skillsData.forEach(skill => {
+  const section = document.createElement('div');
+  section.className = 'section';
 
-  .section{
-    display: flex;
-    margin-bottom: 30px;
-  }
+  const img = document.createElement('img');
+  img.src = skill.src;
+  img.alt = skill.alt;
+  img.className = 'icon ';
 
-  .section img{
-    width:50px;
-    height: 50px;
-  }
+  const p = document.createElement('p');
+  p.className = 'skills-title';
+  p.textContent = skill.title;
 
-  .section p {
-    font-size: 1.5rem;
-    margin-right: 30px;
-    margin-left: 20px;
-    margin-bottom: 0px;
-    margin-top: 5px;
-  }
-</style>
+  section.appendChild(img);
+  section.appendChild(p);
+  skillIconContainer.appendChild(section);
+  });
+
+
+const learningData = [
+  { src: '../../public/react.svg', alt: 'react', title: 'React' },
+  { src: '../../public/typescript.svg', alt: 'typescript', title: 'Typescript' },
+  { src: '../../public/next-js.svg', alt: 'next-js', title: 'Next.js' },
+];
+
+learningData.forEach(skill => {
+  const section = document.createElement('div');
+  section.className = 'section';
+
+  const img = document.createElement('img');
+  img.src = skill.src;
+  img.alt = skill.alt;
+  img.className = 'icon';
+
+  const p = document.createElement('p');
+  p.className = 'skills-title';
+  p.textContent = skill.title;
+
+  section.appendChild(img);
+  section.appendChild(p);
+  currentlyLearningContainer.appendChild(section);
+});
+})
+  
+</script>
